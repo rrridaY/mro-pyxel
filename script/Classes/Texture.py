@@ -33,3 +33,29 @@ class Texture(Origin, Size):
         画像を描画する関数
         """
         pyxel.blt(x, y, self.imgbnk, self.origin.x, self.origin.y, self.size.x, self.size.y, self.colkey)
+
+    def top(self):
+        """
+        画像の上端の座標を取得する関数
+        """
+        return self.origin.y
+    def bottom(self):
+        """
+        画像の下端の座標を取得する関数
+        """
+        return self.origin.y + self.size.y
+    def left(self):
+        """
+        画像の左端の座標を取得する関数
+        """
+        return self.origin.x
+    def right(self):
+        """
+        画像の右端の座標を取得する関数
+        """
+        return self.origin.x + self.size.x
+    def width(self):
+        """
+        画像の幅を取得する関数
+        """
+        return self.size.x

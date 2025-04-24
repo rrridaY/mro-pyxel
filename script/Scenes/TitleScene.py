@@ -7,7 +7,7 @@ from Scenes.BaseScene import BaseScene
 
 # クラスのインポート(データ処理)
 from Classes.Vector2 import Vector2
-from Classes.Button import Button,TwitterShareButton
+from Classes.Button import Button
 from Classes.Texture import Texture
 
 # 関数のインポート
@@ -19,7 +19,6 @@ from constants import SCREEN_WIDTH, SCREEN_HEIGHT, GAME_TITLE, GAME_URL
 
 
 # シェア用ボタン
-Xbutton = Button(pos=Vector2(20, 80), texture=Texture(0, Vector2(0, 24), Vector2(16, 17),colkey=pyxel.COLOR_BLACK), event_func=TwitterShareButton.open_shareURL_with_score)
 
 
 
@@ -28,7 +27,6 @@ class TitleScene(BaseScene):
         super().__init__() # baseSceneのinitを呼び出す
         self.max_score = max_score
 
-        self.sharebutton = Xbutton# ボタン
 
 
         
@@ -42,10 +40,6 @@ class TitleScene(BaseScene):
             # マウスのクリック位置を取得
             clicked_pos = Vector2(pyxel.mouse_x, pyxel.mouse_y)
 
-            # シェア用ボタンがクリックされた場合
-            if self.sharebutton.is_clicked(clicked_pos):
-                print("Share button is clicked")
-                self.sharebutton.click_event(score=self.max_score)
         
 
     def draw(self):
@@ -54,12 +48,6 @@ class TitleScene(BaseScene):
 
 
         pyxel.text(60,20, GAME_TITLE, pyxel.COLOR_WHITE)
-        self.sharebutton.draw()
-        pyxel.text(self.sharebutton.pos.x + self.sharebutton.texture.size.x, 
-                   self.sharebutton.pos.y + 5, 
-                   f"<-Share\nYour Score: {self.max_score}",
-                   pyxel.COLOR_WHITE
-                   )
         
     def start_game(self,max_score=0):
         pass
